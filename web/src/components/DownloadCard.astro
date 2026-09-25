@@ -6,7 +6,7 @@ import Badge from './ui/Badge.astro';
 import CodeBlock from './ui/CodeBlock.astro';
 import GithubIcon from './ui/GithubIcon.astro';
 
-const downloadUrl = 'https://github.com/AJAYMYTH/PayDart/releases/latest/download/app-debug.apk';
+const downloadUrl = 'https://github.com/AJAYMYTH/PayDart/releases/latest/download/PayDart-v1.0.0.apk';
 const releasesUrl = 'https://github.com/AJAYMYTH/PayDart/releases';
 const apkChecksum = 'a9f2430150d90d79f041703e2ad3b0fcebc75b31df68153443314be1c70e3020';
 
@@ -172,11 +172,11 @@ const qrSvg = await QRCode.toString(downloadUrl, {
     <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 reveal-on-scroll">
       <CodeBlock
         title="Verify SHA-256 Checksum"
-        code={`# Linux / macOS\nsha256sum app-debug.apk\n# Expected: ${apkChecksum}\n\n# Windows PowerShell\nGet-FileHash app-debug.apk -Algorithm SHA256`}
+        code={`# Linux / macOS\nsha256sum PayDart-v1.0.0.apk\n# Expected: ${apkChecksum}\n\n# Windows PowerShell\nGet-FileHash PayDart-v1.0.0.apk -Algorithm SHA256`}
       />
       <CodeBlock
         title="Install via ADB (Developers)"
-        code={`# Connect phone via USB with USB Debugging enabled\nadb devices\n\n# Install PayDart APK instantly\nadb install -r app-debug.apk`}
+        code={`# Connect phone via USB with USB Debugging enabled\nadb devices\n\n# Install PayDart APK instantly\nadb install -r PayDart-v1.0.0.apk`}
       />
     </div>
   </div>

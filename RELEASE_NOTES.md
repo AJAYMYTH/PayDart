@@ -59,20 +59,20 @@ With PayDart, you point, scan in **under 10 milliseconds**, and snap directly in
 ## 📦 Download & Verification
 
 ### Direct Sideload:
-Download `PayDart-v1.0.0-debug.apk` or `app-debug.apk` from [GitHub Releases](https://github.com/AJAYMYTH/PayDart/releases).
+Download `PayDart-v1.0.0.apk` from [GitHub Releases](https://github.com/AJAYMYTH/PayDart/releases).
 
 ### Developer Quick Install (via ADB):
 ```bash
-adb install -r PayDart-v1.0.0-debug.apk
+adb install -r PayDart-v1.0.0.apk
 ```
 
 ### Cryptographic Verification:
 ```bash
 # Linux / macOS
-sha256sum PayDart-v1.0.0-debug.apk
+sha256sum PayDart-v1.0.0.apk
 
 # Windows PowerShell
-Get-FileHash PayDart-v1.0.0-debug.apk -Algorithm SHA256
+Get-FileHash PayDart-v1.0.0.apk -Algorithm SHA256
 ```
 
 ---

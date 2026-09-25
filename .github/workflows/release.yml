@@ -57,18 +57,21 @@ jobs:
           fi
           echo "TAG=$TAG" >> $GITHUB_ENV
 
-          # Copy debug APK with versioned and fixed names for direct downloads
-          if [ -f app/build/outputs/apk/debug/app-debug.apk ]; then
-            cp app/build/outputs/apk/debug/app-debug.apk release-artifacts/PayDart-${TAG}-debug.apk
-            cp app/build/outputs/apk/debug/app-debug.apk release-artifacts/app-debug.apk
+          # Find generated debug APK
+          DEBUG_APK=$(find app/build/outputs/apk/debug -type f -name "*.apk" | head -n 1)
+          if [ -n "$DEBUG_APK" ] && [ -f "$DEBUG_APK" ]; then
+            echo "Found debug APK: $DEBUG_APK"
+            cp "$DEBUG_APK" "release-artifacts/PayDart-${TAG}.apk"
+            cp "$DEBUG_APK" "release-artifacts/PayDart-${TAG}-debug.apk"
+            cp "$DEBUG_APK" "release-artifacts/app-debug.apk"
           fi
 
-          # Copy release APK if produced
-          if [ -f app/build/outputs/apk/release/app-release.apk ]; then
-            cp app/build/outputs/apk/release/app-release.apk release-artifacts/PayDart-${TAG}-release.apk
-            cp app/build/outputs/apk/release/app-release.apk release-artifacts/app-release.apk
-          elif [ -f app/build/outputs/apk/release/app-release-unsigned.apk ]; then
-            cp app/build/outputs/apk/release/app-release-unsigned.apk release-artifacts/PayDart-${TAG}-release-unsigned.apk
+          # Find generated release APK if present
+          RELEASE_APK=$(find app/build/outputs/apk/release -type f -name "*.apk" | head -n 1)
+          if [ -n "$RELEASE_APK" ] && [ -f "$RELEASE_APK" ]; then
+            echo "Found release APK: $RELEASE_APK"
+            cp "$RELEASE_APK" "release-artifacts/PayDart-${TAG}.apk"
+            cp "$RELEASE_APK" "release-artifacts/PayDart-${TAG}-release.apk"
           fi
 
           # Compute SHA-256 checksums
@@ -124,14 +127,14 @@ jobs:
 
             ### 📦 Direct Installation
 
-            1. Download `PayDart-${{ env.TAG }}-debug.apk` or `app-debug.apk` from the Assets below.
+            1. Download `PayDart-${{ env.TAG }}.apk` from the Assets below.
             2. When prompted by Android, enable **Install unknown apps** for your browser or file manager.
             3. Grant Camera permission and launch checkout in milliseconds.
 
             #### Developer / ADB Quick Install:
             ```bash
             # Connect device with USB Debugging enabled
-            adb install -r PayDart-${{ env.TAG }}-debug.apk
+            adb install -r PayDart-${{ env.TAG }}.apk
             ```
 
             ---
@@ -141,10 +144,10 @@ jobs:
             Verify your downloaded APK with SHA-256 before sideloading:
             ```bash
             # Linux / macOS
-            sha256sum PayDart-${{ env.TAG }}-debug.apk
+            sha256sum PayDart-${{ env.TAG }}.apk
 
             # Windows PowerShell
-            Get-FileHash PayDart-${{ env.TAG }}-debug.apk -Algorithm SHA256
+            Get-FileHash PayDart-${{ env.TAG }}.apk -Algorithm SHA256
             ```
             Refer to the attached `SHA256SUMS.txt` for authoritative verification hashes.
 
