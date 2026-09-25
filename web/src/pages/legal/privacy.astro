@@ -1,0 +1,73 @@
+---
+import LegalLayout from '../../layouts/LegalLayout.astro';
+---
+
+<LegalLayout
+  title="Privacy Policy"
+  description="PayDart is 100% offline, air-gapped, and collects zero personal data, analytics, or transaction history."
+  lastUpdated="September 2026"
+>
+  <div class="space-y-8 text-zinc-300">
+    <div class="p-6 rounded-2xl bg-[#08120b] border border-[#00F076]/40 text-[#00F076] text-sm font-mono">
+      <strong>Core Privacy Summary:</strong> PayDart does NOT request the <code>android.permission.INTERNET</code> permission. It has zero network access, zero server backends, zero telemetry, and zero tracking SDKs. It is physically impossible for PayDart to leak your personal or financial information.
+    </div>
+
+    <section>
+      <h2 class="text-2xl font-bold text-white mb-3">1. Information We Collect</h2>
+      <p class="mb-4">
+        We collect <strong>no personal data</strong>. Specifically:
+      </p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>No Personal Identifiers:</strong> We do not ask for or collect names, email addresses, phone numbers, or government IDs.</li>
+        <li><strong>No Financial or Bank Data:</strong> We do not process, store, or transmit bank account numbers, debit/credit cards, UPI PINs, or account balances.</li>
+        <li><strong>No Analytics or Telemetry:</strong> There are no Google Analytics, Firebase, Mixpanel, Sentry, or third-party tracking libraries inside PayDart.</li>
+        <li><strong>No Cookies or Device Fingerprints:</strong> Neither the mobile app nor this website tracks your cross-site activities.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-white mb-3">2. Device Permissions &amp; Hardware Access</h2>
+      <p class="mb-4">
+        PayDart requests minimal, strictly necessary Android hardware permissions:
+      </p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>
+          <strong>Camera (<code>android.permission.CAMERA</code>):</strong> Used exclusively to display the camera viewfinder on your device screen and feed video frames into Google ML Kit Barcode Scanning for detecting QR codes. Video frames are processed in volatile memory and immediately discarded. No video or images are ever saved to disk.
+        </li>
+        <li>
+          <strong>Vibration (<code>android.permission.VIBRATE</code>):</strong> Provides subtle tactile feedback upon successful QR code detection.
+        </li>
+        <li>
+          <strong>Photo Picker:</strong> When scanning a QR code from a screenshot, PayDart uses the modern Android Photo Picker API. PayDart only reads the single image file selected by you in volatile RAM to extract the barcode string. It has zero access to your broader photo gallery.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-white mb-3">3. How Payments Are Handled (UPI Handoff)</h2>
+      <p class="mb-4">
+        PayDart is <em>not</em> a payment gateway, digital wallet, or financial intermediary. PayDart is a pure URI launcher.
+      </p>
+      <p class="mb-4">
+        When a QR code containing an NPCI-compliant UPI URI (<code>upi://pay?...</code>) is detected, PayDart constructs an Android <code>ACTION_VIEW</code> Intent containing the exact string read from the QR code and dispatches it directly to the bank or UPI app installed on your device (such as Google Pay, PhonePe, Paytm, or BHIM).
+      </p>
+      <p>
+        The actual payment, authentication, encryption, and PIN entry occur entirely inside your certified UPI application under NPCI security standards.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-white mb-3">4. Third-Party Libraries</h2>
+      <p class="mb-4">
+        PayDart uses Google ML Kit Barcode Scanning (bundled unbundled C++ binary <code>libbarhopper_v3.so</code>). Because the host application lacks the <code>INTERNET</code> permission, ML Kit runs entirely offline and cannot communicate with Google servers.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-white mb-3">5. Open Source Verification</h2>
+      <p>
+        PayDart is open source under the Apache 2.0 license. Anyone can inspect the complete source code, audit the AndroidManifest.xml, and build the binary deterministically from the public repository at <a href="https://github.com/AJAYMYTH/PayDart" class="text-[#00F076] hover:underline" target="_blank" rel="noopener noreferrer">https://github.com/AJAYMYTH/PayDart</a>.
+      </p>
+    </section>
+  </div>
+</LegalLayout>

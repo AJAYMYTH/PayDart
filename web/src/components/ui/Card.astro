@@ -1,0 +1,12 @@
+---
+interface Props {
+  class?: string;
+  glow?: boolean;
+}
+
+const { class: className = '', glow = false } = Astro.props;
+---
+
+<div class={`relative rounded-2xl glass-panel glass-panel-hover p-6 md:p-8 transition-all duration-300 ${glow ? 'shadow-[0_0_30px_rgba(0,240,118,0.12)] border-[#00F076]/30' : ''} ${className}`}>
+  <slot />
+</div>

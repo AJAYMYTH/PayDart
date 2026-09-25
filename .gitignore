@@ -12,3 +12,11 @@ app/build/
 .cxx/
 *.apk
 *.aab
+
+# Web & Astro build artifacts
+node_modules/
+.astro/
+dist/
+web/node_modules/
+web/.astro/
+web/dist/

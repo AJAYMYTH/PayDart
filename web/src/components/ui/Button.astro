@@ -1,0 +1,51 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'cyber' | 'outline' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  target?: string;
+  rel?: string;
+  class?: string;
+  id?: string;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  target,
+  rel,
+  class: className = '',
+  id,
+} = Astro.props;
+
+const baseStyles = 'inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none select-none active:scale-[0.98]';
+
+const sizeStyles = {
+  sm: 'px-3 py-1.5 text-xs rounded-lg gap-1.5',
+  md: 'px-5 py-2.5 text-sm rounded-xl gap-2',
+  lg: 'px-7 py-3.5 text-base rounded-2xl gap-3 font-semibold',
+};
+
+const variantStyles = {
+  primary: 'bg-white text-black font-semibold hover:bg-[#00F076] hover:shadow-[0_0_25px_rgba(0,240,118,0.5)] transition-all duration-300',
+  cyber: 'bg-[#00F076] text-black font-semibold hover:bg-white hover:shadow-[0_0_25px_rgba(255,255,255,0.4)] transition-all duration-300',
+  secondary: 'bg-[#0d1d12] text-white border border-[#00F076]/30 hover:border-[#00F076] hover:bg-[#142b1b] hover:shadow-[0_0_20px_rgba(0,240,118,0.2)]',
+  outline: 'border border-white/20 text-white hover:border-white hover:bg-white/5',
+  ghost: 'text-zinc-400 hover:text-white hover:bg-white/5',
+};
+
+const classes = `${baseStyles} ${sizeStyles[size]} ${variantStyles[variant]} ${className}`;
+---
+
+{
+  href ? (
+    <a href={href} target={target} rel={rel} class={classes} id={id}>
+      <slot />
+    </a>
+  ) : (
+    <button class={classes} id={id}>
+      <slot />
+    </button>
+  )
+}

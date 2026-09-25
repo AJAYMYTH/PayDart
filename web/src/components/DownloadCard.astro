@@ -1,0 +1,183 @@
+---
+import QRCode from 'qrcode';
+import { Download, QrCode, ShieldCheck, Terminal, Smartphone, CheckCircle2, ArrowRight } from '@lucide/astro';
+import Button from './ui/Button.astro';
+import Badge from './ui/Badge.astro';
+import CodeBlock from './ui/CodeBlock.astro';
+import GithubIcon from './ui/GithubIcon.astro';
+
+const downloadUrl = 'https://github.com/AJAYMYTH/PayDart/releases/latest/download/app-debug.apk';
+const releasesUrl = 'https://github.com/AJAYMYTH/PayDart/releases';
+const apkChecksum = 'a9f2430150d90d79f041703e2ad3b0fcebc75b31df68153443314be1c70e3020';
+
+// Generate SVG QR Code at build-time (0 client JS overhead!)
+const qrSvg = await QRCode.toString(downloadUrl, {
+  type: 'svg',
+  margin: 1,
+  color: {
+    dark: '#00F076',
+    light: '#00000000',
+  },
+  errorCorrectionLevel: 'M',
+});
+---
+
+<section id="download" class="py-20 md:py-28 relative scroll-mt-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-14 reveal-on-scroll">
+      <Badge variant="cyber" class="mb-4">
+        <Download class="w-3.5 h-3.5" />
+        DIRECT APK DISTRIBUTION
+      </Badge>
+      <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
+        Ready for <span class="text-gradient-emerald">Instant Checkout?</span>
+      </h2>
+      <p class="text-zinc-400 text-base sm:text-lg">
+        Download the official APK directly from GitHub Releases. No Google Play account required, no tracking telemetry, 100% open source.
+      </p>
+    </div>
+
+    <!-- Main Download Container -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch reveal-on-scroll">
+      <!-- Left Card: Direct Download & Metadata (7 cols) -->
+      <div class="lg:col-span-7 glass-panel p-8 sm:p-10 rounded-3xl flex flex-col justify-between border-white/10 hover:border-[#00F076]/40 transition-all duration-300">
+        <div>
+          <!-- Release Header Badge -->
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#00F076] animate-pulse"></span>
+              <span class="text-xs font-mono font-semibold uppercase text-[#00F076]">LATEST STABLE RELEASE</span>
+            </div>
+            <span class="text-xs font-mono px-3 py-1 rounded-full bg-white/10 text-white font-medium border border-white/20">
+              v1.0.0-release
+            </span>
+          </div>
+
+          <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3">
+            PayDart Android APK
+          </h3>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+            Point, scan, and hand off in 8 milliseconds. Completely air-gapped with zero network permissions. Compatible with any Android device running Android 7.0 (Nougat) or newer.
+          </p>
+
+          <!-- Specifications Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+            <div class="p-3 rounded-xl bg-white/[0.03] border border-white/10 text-center">
+              <div class="text-[11px] font-mono text-zinc-400">File Size</div>
+              <div class="text-sm font-mono font-bold text-white mt-1">~4.8 MB</div>
+            </div>
+            <div class="p-3 rounded-xl bg-white/[0.03] border border-white/10 text-center">
+              <div class="text-[11px] font-mono text-zinc-400">Scan Latency</div>
+              <div class="text-sm font-mono font-bold text-[#00F076] mt-1">&lt; 10 ms</div>
+            </div>
+            <div class="p-3 rounded-xl bg-white/[0.03] border border-white/10 text-center">
+              <div class="text-[11px] font-mono text-zinc-400">Min Android</div>
+              <div class="text-sm font-mono font-bold text-white mt-1">7.0+ (API 24)</div>
+            </div>
+            <div class="p-3 rounded-xl bg-white/[0.03] border border-white/10 text-center">
+              <div class="text-[11px] font-mono text-zinc-400">License</div>
+              <div class="text-sm font-mono font-bold text-[#00F076] mt-1">Apache 2.0</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <!-- CTA Action Buttons -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-6">
+            <Button
+              variant="primary"
+              size="lg"
+              href={downloadUrl}
+              class="w-full sm:w-auto shadow-glow-md flex-1 justify-center text-center"
+            >
+              <Download class="w-5 h-5 text-black" />
+              <span>Download APK (4.8 MB)</span>
+            </Button>
+
+            <Button
+              variant="secondary"
+              size="lg"
+              href={releasesUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full sm:w-auto justify-center"
+            >
+              <GithubIcon class="w-5 h-5 text-zinc-300" />
+              <span>All Releases</span>
+            </Button>
+          </div>
+
+          <!-- Trust Guarantees -->
+          <div class="flex flex-wrap items-center gap-y-2 gap-x-5 text-xs text-zinc-400 pt-4 border-t border-white/10">
+            <span class="flex items-center gap-1.5 text-zinc-300">
+              <ShieldCheck class="w-4 h-4 text-[#00F076]" />
+              No INTERNET permission
+            </span>
+            <span class="flex items-center gap-1.5 text-zinc-300">
+              <CheckCircle2 class="w-4 h-4 text-[#00F076]" />
+              Zero analytics & telemetry
+            </span>
+            <span class="flex items-center gap-1.5 text-zinc-300">
+              <CheckCircle2 class="w-4 h-4 text-[#00F076]" />
+              Verified Open-Source build
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Card: Instant QR Code Scan to Phone (5 cols) -->
+      <div class="lg:col-span-5 glass-panel p-8 rounded-3xl flex flex-col items-center justify-between text-center border-white/10 hover:border-[#00F076]/40 transition-all duration-300">
+        <div class="w-full flex flex-col items-center">
+          <Badge variant="emerald" class="mb-4">
+            <Smartphone class="w-3.5 h-3.5 text-[#00F076]" />
+            INSTALL DIRECTLY ON PHONE
+          </Badge>
+
+          <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">
+            Scan to Download
+          </h3>
+          <p class="text-zinc-400 text-xs sm:text-sm max-w-xs mb-6">
+            Point your Android camera at this QR code to download the latest APK directly to your smartphone.
+          </p>
+
+          <!-- QR Code Container with Cyber Reticle Border -->
+          <div class="relative p-5 rounded-2xl bg-black border-2 border-[#00F076]/40 shadow-[0_0_35px_rgba(0,240,118,0.25)] group hover:border-[#00F076] transition-all duration-300">
+            <!-- Corners -->
+            <div class="absolute -top-1.5 -left-1.5 w-4 h-4 border-t-2 border-l-2 border-[#00F076]"></div>
+            <div class="absolute -top-1.5 -right-1.5 w-4 h-4 border-t-2 border-r-2 border-[#00F076]"></div>
+            <div class="absolute -bottom-1.5 -left-1.5 w-4 h-4 border-b-2 border-l-2 border-[#00F076]"></div>
+            <div class="absolute -bottom-1.5 -right-1.5 w-4 h-4 border-b-2 border-r-2 border-[#00F076]"></div>
+
+            <div class="w-48 h-48 sm:w-52 sm:h-52 flex items-center justify-center p-2" set:html={qrSvg}>
+            </div>
+
+            <!-- Subtle hover badge -->
+            <div class="absolute inset-0 bg-black/70 backdrop-blur-sm rounded-xl opacity-0 group-hover:opacity-100 flex flex-col items-center justify-center transition-all duration-200">
+              <Download class="w-8 h-8 text-[#00F076] mb-1 animate-bounce" />
+              <span class="text-xs font-mono font-bold text-white">Direct APK Link</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 w-full pt-4 border-t border-white/10">
+          <div class="text-[11px] font-mono text-zinc-400 mb-1">Direct Link Target</div>
+          <div class="text-xs font-mono text-emerald-400 truncate px-3 py-1.5 bg-black/40 rounded-lg border border-white/10">
+            github.com/AJAYMYTH/PayDart/releases
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHA-256 Checksum & Terminal ADB Command -->
+    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 reveal-on-scroll">
+      <CodeBlock
+        title="Verify SHA-256 Checksum"
+        code={`# Linux / macOS\nsha256sum app-debug.apk\n# Expected: ${apkChecksum}\n\n# Windows PowerShell\nGet-FileHash app-debug.apk -Algorithm SHA256`}
+      />
+      <CodeBlock
+        title="Install via ADB (Developers)"
+        code={`# Connect phone via USB with USB Debugging enabled\nadb devices\n\n# Install PayDart APK instantly\nadb install -r app-debug.apk`}
+      />
+    </div>
+  </div>
+</section>

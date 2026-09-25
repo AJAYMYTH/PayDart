@@ -1,0 +1,56 @@
+---
+import Layout from './Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import BigFooter from '../components/BigFooter.astro';
+import { ArrowLeft, ShieldCheck, FileText } from '@lucide/astro';
+
+interface Props {
+  title: string;
+  description: string;
+  lastUpdated?: string;
+}
+
+const { title, description, lastUpdated = 'September 2026' } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Layout title={`${title} — PayDart Legal`} description={description}>
+  <Navbar />
+
+  <main class="py-16 md:py-24 relative flex-1">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Back to Home -->
+      <a
+        href={`${baseUrl}/`}
+        class="inline-flex items-center gap-2 text-xs font-mono text-zinc-400 hover:text-[#00F076] transition-colors mb-8"
+      >
+        <ArrowLeft class="w-3.5 h-3.5" />
+        Back to PayDart Home
+      </a>
+
+      <!-- Page Title -->
+      <div class="mb-12 pb-8 border-b border-white/10">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium bg-[#00F076]/10 border border-[#00F076]/30 text-[#00F076] mb-4">
+          <FileText class="w-3.5 h-3.5" />
+          LEGAL &amp; COMPLIANCE
+        </div>
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+          {title}
+        </h1>
+        <p class="text-zinc-400 text-base sm:text-lg leading-relaxed">
+          {description}
+        </p>
+        <div class="mt-4 text-xs font-mono text-zinc-500">
+          Last Updated: {lastUpdated}
+        </div>
+      </div>
+
+      <!-- Legal Document Content -->
+      <article class="prose prose-invert prose-emerald max-w-none prose-headings:text-white prose-p:text-zinc-300 prose-p:leading-relaxed prose-li:text-zinc-300 prose-code:text-[#00F076] prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-strong:text-white">
+        <slot />
+      </article>
+    </div>
+  </main>
+
+  <BigFooter />
+</Layout>

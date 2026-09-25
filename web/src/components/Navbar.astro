@@ -1,0 +1,68 @@
+---
+import { Download, Zap } from '@lucide/astro';
+import Button from './ui/Button.astro';
+import GithubIcon from './ui/GithubIcon.astro';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const downloadUrl = 'https://github.com/AJAYMYTH/PayDart/releases/latest/download/app-debug.apk';
+const githubUrl = 'https://github.com/AJAYMYTH/PayDart';
+---
+
+<header class="sticky top-0 z-50 w-full border-b border-white/10 bg-[#040805]/80 backdrop-blur-xl">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+    <!-- Logo -->
+    <a href={`${baseUrl}/`} class="flex items-center gap-3 group">
+      <div class="relative w-10 h-10 rounded-xl bg-[#08120b] border border-[#00F076]/40 flex items-center justify-center p-2 group-hover:border-[#00F076] group-hover:shadow-[0_0_20px_rgba(0,240,118,0.4)] transition-all duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" class="w-full h-full">
+          <path d="M12 20V12H20" stroke="#00F076" stroke-width="3" stroke-linecap="round" />
+          <path d="M52 20V12H44" stroke="#00F076" stroke-width="3" stroke-linecap="round" />
+          <path d="M12 44V52H20" stroke="#00F076" stroke-width="3" stroke-linecap="round" />
+          <path d="M52 44V52H44" stroke="#00F076" stroke-width="3" stroke-linecap="round" />
+          <path d="M35 14L19 34H31L27 50L45 28H31L35 14Z" fill="#00F076" />
+          <path d="M33 18L23 33H31L29 44L41 29H31L33 18Z" fill="#FFFFFF" fill-opacity="0.9" />
+        </svg>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-extrabold text-xl tracking-tight text-white flex items-center gap-1.5">
+          PayDart
+          <span class="text-[10px] font-mono font-semibold uppercase px-1.5 py-0.5 rounded bg-[#00F076]/15 text-[#00F076] border border-[#00F076]/30">v1.0</span>
+        </span>
+        <span class="text-[10px] text-zinc-400 font-mono tracking-wider -mt-1 hidden sm:block">ULTRA-FAST UPI LAUNCHER</span>
+      </div>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-300">
+      <a href="#problem-solution" class="hover:text-[#00F076] transition-colors">Comparison</a>
+      <a href="#benchmarks" class="hover:text-[#00F076] transition-colors">Benchmarks</a>
+      <a href="#features" class="hover:text-[#00F076] transition-colors">Architecture</a>
+      <a href="#download" class="hover:text-[#00F076] transition-colors">Download</a>
+      <a href="#installation" class="hover:text-[#00F076] transition-colors">Installation</a>
+      <a href="#faq" class="hover:text-[#00F076] transition-colors">FAQ</a>
+    </nav>
+
+    <!-- Actions -->
+    <div class="flex items-center gap-3">
+      <a
+        href={githubUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 text-xs font-mono rounded-xl border border-white/10 bg-white/5 text-zinc-300 hover:text-white hover:border-white/30 transition-all"
+      >
+        <GithubIcon class="w-4 h-4 text-zinc-300" />
+        <span>GitHub</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-[#00F076]"></span>
+      </a>
+
+      <Button
+        variant="primary"
+        size="sm"
+        href="#download"
+        class="shadow-glow-sm"
+      >
+        <Download class="w-4 h-4 text-black" />
+        <span class="font-bold">Get APK</span>
+      </Button>
+    </div>
+  </div>
+</header>

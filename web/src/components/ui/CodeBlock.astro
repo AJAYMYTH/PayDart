@@ -1,0 +1,76 @@
+---
+import { Check, Copy, Terminal } from '@lucide/astro';
+
+interface Props {
+  code: string;
+  language?: string;
+  title?: string;
+  class?: string;
+}
+
+const { code, title = 'Terminal', class: className = '' } = Astro.props;
+---
+
+<div class={`rounded-xl border border-white/10 bg-[#070e09] overflow-hidden ${className}`}>
+  <!-- Terminal Header -->
+  <div class="flex items-center justify-between px-4 py-2.5 bg-[#0a160d] border-b border-white/10">
+    <div class="flex items-center gap-2">
+      <div class="flex gap-1.5">
+        <span class="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/80 inline-block"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-[#00F076]/80 inline-block"></span>
+      </div>
+      <span class="text-xs font-mono text-zinc-400 flex items-center gap-1.5 ml-2">
+        <Terminal class="w-3.5 h-3.5 text-[#00F076]" />
+        {title}
+      </span>
+    </div>
+    <button
+      type="button"
+      class="copy-btn text-xs font-mono text-zinc-400 hover:text-[#00F076] transition-colors flex items-center gap-1.5 px-2 py-1 rounded bg-white/5 hover:bg-white/10"
+      data-code={code}
+      aria-label="Copy code"
+    >
+      <Copy class="w-3.5 h-3.5 copy-icon" />
+      <Check class="w-3.5 h-3.5 check-icon hidden text-[#00F076]" />
+      <span class="copy-text">Copy</span>
+    </button>
+  </div>
+  <!-- Code Content -->
+  <div class="p-4 font-mono text-xs md:text-sm text-emerald-300 overflow-x-auto selection:bg-[#00F076] selection:text-black">
+    <pre><code>{code}</code></pre>
+  </div>
+</div>
+
+<script>
+  function setupCopyButtons() {
+    document.querySelectorAll('.copy-btn').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const code = btn.getAttribute('data-code');
+        if (!code) return;
+        try {
+          await navigator.clipboard.writeText(code);
+          const copyIcon = btn.querySelector('.copy-icon');
+          const checkIcon = btn.querySelector('.check-icon');
+          const copyText = btn.querySelector('.copy-text');
+
+          copyIcon?.classList.add('hidden');
+          checkIcon?.classList.remove('hidden');
+          if (copyText) copyText.textContent = 'Copied!';
+
+          setTimeout(() => {
+            copyIcon?.classList.remove('hidden');
+            checkIcon?.classList.add('hidden');
+            if (copyText) copyText.textContent = 'Copy';
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy code: ', err);
+        }
+      });
+    });
+  }
+
+  // Setup on page load and page transitions
+  setupCopyButtons();
+  document.addEventListener('astro:page-load', setupCopyButtons);
+</script>

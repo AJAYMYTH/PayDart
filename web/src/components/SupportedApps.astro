@@ -1,0 +1,59 @@
+---
+import { Check, ShieldCheck, Zap, ExternalLink } from '@lucide/astro';
+import Badge from './ui/Badge.astro';
+
+const apps = [
+  { name: 'Google Pay', pkg: 'com.google.android.apps.nbu.paisa.user', tag: 'Fast Handoff' },
+  { name: 'PhonePe', pkg: 'com.phonepe.app', tag: 'Fast Handoff' },
+  { name: 'Paytm', pkg: 'net.one97.paytm', tag: 'Fast Handoff' },
+  { name: 'BHIM UPI', pkg: 'in.org.npci.upiapp', tag: 'Official NPCI' },
+  { name: 'CRED', pkg: 'com.dreamplug.androidapp', tag: 'Fast Handoff' },
+  { name: 'Navi UPI', pkg: 'com.naviapp', tag: 'Fast Handoff' },
+  { name: 'Amazon Pay', pkg: 'in.amazon.mShop.android.shopping', tag: 'Fast Handoff' },
+  { name: 'Slice UPI', pkg: 'indwin.c3.shareme', tag: 'Fast Handoff' },
+];
+---
+
+<section class="py-16 md:py-24 relative border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-12 reveal-on-scroll">
+      <Badge variant="cyber" class="mb-4">
+        <Zap class="w-3.5 h-3.5" />
+        ECOSYSTEM COMPATIBILITY
+      </Badge>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-3">
+        Works With <span class="text-gradient-emerald">Every Major UPI App.</span>
+      </h2>
+      <p class="text-zinc-400 text-sm sm:text-base">
+        PayDart respects your payment preferences. Configure your favorite UPI app as default, or let PayDart auto-detect your installed apps with zero manual setup.
+      </p>
+    </div>
+
+    <!-- Supported Apps Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-5xl mx-auto reveal-on-scroll">
+      {
+        apps.map((app) => (
+          <div class="glass-panel p-5 rounded-2xl border-white/10 hover:border-[#00F076]/40 transition-all flex flex-col justify-between group">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-2 h-2 rounded-full bg-[#00F076]"></span>
+              <span class="text-[10px] font-mono text-zinc-400 px-2 py-0.5 rounded bg-white/5">{app.tag}</span>
+            </div>
+            <div>
+              <div class="text-base font-bold text-white group-hover:text-[#00F076] transition-colors">
+                {app.name}
+              </div>
+              <div class="text-[11px] font-mono text-zinc-500 truncate mt-1">
+                {app.pkg}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Universal Fallback Note -->
+    <div class="mt-8 text-center text-xs font-mono text-zinc-400 reveal-on-scroll">
+      <span>+ Any NPCI-compliant UPI payment app supporting the standard <code class="text-[#00F076]">upi://pay</code> intent action.</span>
+    </div>
+  </div>
+</section>

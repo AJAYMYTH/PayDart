@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-dark: #040805;
+    --brand-primary: #00F076;
+    --brand-emerald: #10B981;
+    --brand-dark: #064E3B;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #040805;
+    color: #FFFFFF;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  body {
+    background-color: #040805;
+    color: #E2E8F0;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  /* Custom Sleek Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #040805;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #142b1b;
+    border-radius: 9999px;
+    border: 2px solid #040805;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00F076;
+  }
+
+  ::selection {
+    background: #00F076;
+    color: #040805;
+  }
+}
+
+/* Cyber Matrix Grid Background */
+.cyber-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 240, 118, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 240, 118, 0.04) 1px, transparent 1px);
+}
+
+.radial-glow-top {
+  background: radial-gradient(circle 800px at 50% -100px, rgba(0, 240, 118, 0.15), rgba(16, 185, 129, 0.05), transparent 70%);
+}
+
+.radial-glow-center {
+  background: radial-gradient(circle 600px at 50% 50%, rgba(0, 240, 118, 0.08), transparent 70%);
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(13, 29, 18, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 240, 118, 0.12);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(20, 43, 27, 0.6);
+  border-color: rgba(0, 240, 118, 0.35);
+  box-shadow: 0 10px 30px -10px rgba(0, 240, 118, 0.15);
+  transform: translateY(-2px);
+}
+
+.glass-card-white {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Text Gradients */
+.text-gradient-green-white {
+  background: linear-gradient(135deg, #FFFFFF 30%, #A7F3D0 70%, #00F076 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-emerald {
+  background: linear-gradient(135deg, #00F076 0%, #10B981 50%, #34D399 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Massive Typographic Footer Text */
+.mega-footer-text {
+  font-size: clamp(3.5rem, 16vw, 16rem);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 0.85;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(0, 240, 118, 0.08) 60%, transparent 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Animated Scanner Laser */
+@keyframes laser-sweep {
+  0% {
+    top: 5%;
+    opacity: 0.2;
+  }
+  50% {
+    top: 90%;
+    opacity: 0.9;
+  }
+  100% {
+    top: 5%;
+    opacity: 0.2;
+  }
+}
+
+.scanner-laser {
+  animation: laser-sweep 2.8s ease-in-out infinite;
+}

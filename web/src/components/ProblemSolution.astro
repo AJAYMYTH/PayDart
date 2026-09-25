@@ -1,0 +1,122 @@
+---
+import { AlertCircle, CheckCircle2, XCircle, Zap, ShieldAlert, ShieldCheck, Flame, Cpu, EyeOff, Layers } from '@lucide/astro';
+import Badge from './ui/Badge.astro';
+---
+
+<section id="problem-solution" class="py-20 md:py-28 relative scroll-mt-20 border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+      <Badge variant="emerald" class="mb-4">
+        <Flame class="w-3.5 h-3.5 text-[#00F076]" />
+        THE FRUSTRATION &amp; THE FIX
+      </Badge>
+      <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
+        Why Stand in Line Waiting for <span class="text-gradient-emerald">Bloatware?</span>
+      </h2>
+      <p class="text-zinc-400 text-base sm:text-lg">
+        Modern payment apps have evolved into financial supermarkets. Before you can scan a ₹20 chai QR code, you are forced to wait through splash screens, credit card offers, and ad trackers.
+      </p>
+    </div>
+
+    <!-- Side-by-Side Comparison -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch reveal-on-scroll">
+      <!-- Traditional Apps (The Problem) -->
+      <div class="p-8 sm:p-10 rounded-3xl bg-red-950/20 border border-red-500/20 relative flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-6">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/30">
+              <XCircle class="w-3.5 h-3.5" />
+              CONVENTIONAL PAYMENT APPS
+            </span>
+            <span class="text-xs font-mono text-zinc-500">6.2s Average Delay</span>
+          </div>
+
+          <h3 class="text-2xl font-bold text-white mb-3">
+            Heavy, Slow &amp; Ad-Saturated
+          </h3>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+            When you tap to open traditional apps, your device executes hundreds of background jobs before displaying the camera viewfinder.
+          </p>
+
+          <ul class="space-y-3.5 mb-8 text-sm text-zinc-300">
+            <li class="flex items-start gap-3">
+              <XCircle class="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+              <span><strong>5 to 8 second cold-start:</strong> Heavy startup splash screens and remote config loading.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <XCircle class="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+              <span><strong>Aggressive Bloatware:</strong> Personal loan banners, mutual fund ads, credit card promotions, and scratchcards.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <XCircle class="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+              <span><strong>40+ Network Tracking Calls:</strong> Telemetry, analytics, location trackers, and behavioral fingerprinting.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <XCircle class="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+              <span><strong>150MB+ Disk &amp; RAM hog:</strong> Drains battery and slows down budget smartphones.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <XCircle class="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+              <span><strong>Sluggish Android Chooser:</strong> System bottom sheet delays transaction handoff by another 400–800ms.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="p-4 rounded-xl bg-black/40 border border-red-500/20 text-xs font-mono text-red-300/80">
+          Result: Awkward counter delays and battery drain at checkout.
+        </div>
+      </div>
+
+      <!-- PayDart (The Solution) -->
+      <div class="p-8 sm:p-10 rounded-3xl bg-[#08120b] border-2 border-[#00F076]/40 shadow-[0_0_40px_rgba(0,240,118,0.15)] relative flex flex-col justify-between">
+        <!-- Top Glow Highlight -->
+        <div class="absolute top-0 right-10 w-32 h-1 bg-gradient-to-r from-transparent via-[#00F076] to-transparent shadow-[0_0_15px_#00F076]"></div>
+
+        <div>
+          <div class="flex items-center justify-between mb-6">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-[#00F076]/15 text-[#00F076] border border-[#00F076]/40 shadow-[0_0_12px_rgba(0,240,118,0.2)]">
+              <Zap class="w-3.5 h-3.5 fill-[#00F076]" />
+              THE PAYDART PROTOCOL
+            </span>
+            <span class="text-xs font-mono font-bold text-[#00F076]">&lt; 10ms Total Latency</span>
+          </div>
+
+          <h3 class="text-2xl font-bold text-white mb-3">
+            Pure Speed. Zero Compromises.
+          </h3>
+          <p class="text-zinc-300 text-sm leading-relaxed mb-6">
+            PayDart does exactly one thing with absolute perfection: point, scan, and hand off to your preferred payment app in milliseconds.
+          </p>
+
+          <ul class="space-y-3.5 mb-8 text-sm text-zinc-200">
+            <li class="flex items-start gap-3">
+              <CheckCircle2 class="w-5 h-5 text-[#00F076] shrink-0 mt-0.5" />
+              <span><strong>Instant &lt; 200ms Cold Start:</strong> Viewfinder opens instantly without splash delays or server calls.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <CheckCircle2 class="w-5 h-5 text-[#00F076] shrink-0 mt-0.5" />
+              <span><strong>Zero Ads &amp; Zero Bloat:</strong> No loan banners, no gamification, no unnecessary tabs. Just pure camera scanner.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <CheckCircle2 class="w-5 h-5 text-[#00F076] shrink-0 mt-0.5" />
+              <span><strong>100% Air-Gapped Offline:</strong> No <code>android.permission.INTERNET</code> declared in the manifest. Impossible to leak data.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <CheckCircle2 class="w-5 h-5 text-[#00F076] shrink-0 mt-0.5" />
+              <span><strong>Featherweight 4.8 MB Footprint:</strong> Zero background daemon, minimal RAM usage (&lt; 15MB).</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <CheckCircle2 class="w-5 h-5 text-[#00F076] shrink-0 mt-0.5" />
+              <span><strong>Zero-Delay Direct Transition:</strong> Bypasses the slow Android system chooser with <code>overridePendingTransition(0, 0)</code>.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="p-4 rounded-xl bg-[#00F076]/10 border border-[#00F076]/30 text-xs font-mono text-[#00F076] flex items-center justify-between">
+          <span>Result: Scan and pay in under 1 second flat.</span>
+          <span class="font-bold">30x Faster</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,75 @@
+---
+import { Terminal, Download, ShieldCheck, CheckCircle2, Smartphone, Key } from '@lucide/astro';
+import Badge from './ui/Badge.astro';
+import CodeBlock from './ui/CodeBlock.astro';
+---
+
+<section id="installation" class="py-20 md:py-28 relative scroll-mt-20 border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+      <Badge variant="emerald" class="mb-4">
+        <Terminal class="w-3.5 h-3.5 text-[#00F076]" />
+        INSTALLATION &amp; VERIFICATION
+      </Badge>
+      <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
+        Simple 3-Step Setup. <span class="text-gradient-emerald">100% Verifiable.</span>
+      </h2>
+      <p class="text-zinc-400 text-base sm:text-lg">
+        Since PayDart is an independent open-source utility, you can sideload it safely or build the binary directly from source code.
+      </p>
+    </div>
+
+    <!-- 3 Step Walkthrough -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 reveal-on-scroll">
+      <!-- Step 1 -->
+      <div class="glass-panel p-8 rounded-3xl border-white/10 hover:border-[#00F076]/40 transition-all">
+        <div class="w-10 h-10 rounded-xl bg-[#00F076]/15 text-[#00F076] font-mono font-bold flex items-center justify-center mb-6">
+          01
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2">Download APK</h3>
+        <p class="text-zinc-400 text-sm leading-relaxed">
+          Grab the latest APK release from GitHub or scan the QR code above directly from your phone.
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="glass-panel p-8 rounded-3xl border-white/10 hover:border-[#00F076]/40 transition-all">
+        <div class="w-10 h-10 rounded-xl bg-white/10 text-white font-mono font-bold flex items-center justify-center mb-6">
+          02
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2">Allow Sideloading</h3>
+        <p class="text-zinc-400 text-sm leading-relaxed">
+          When prompted, toggle <em>"Install unknown apps"</em> for your browser or file manager in Android Settings.
+        </p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="glass-panel p-8 rounded-3xl border-white/10 hover:border-[#00F076]/40 transition-all">
+        <div class="w-10 h-10 rounded-xl bg-[#00F076]/15 text-[#00F076] font-mono font-bold flex items-center justify-center mb-6">
+          03
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2">Grant Camera &amp; Pay</h3>
+        <p class="text-zinc-400 text-sm leading-relaxed">
+          Grant camera permission on first launch. That's it! Point at any QR code and watch it launch in milliseconds.
+        </p>
+      </div>
+    </div>
+
+    <!-- Developer Build From Source Terminal -->
+    <div class="max-w-4xl mx-auto reveal-on-scroll">
+      <div class="p-6 sm:p-8 rounded-3xl glass-panel border-white/10">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2">
+            <Terminal class="w-4 h-4 text-[#00F076]" />
+            <span class="text-sm font-bold text-white">Build From Source (Hermetic Build)</span>
+          </div>
+          <span class="text-xs font-mono text-zinc-400">JDK 17 + Android SDK 35</span>
+        </div>
+        <CodeBlock
+          title="Bash / PowerShell"
+          code={`# 1. Clone repository\ngit clone https://github.com/AJAYMYTH/PayDart.git\ncd PayDart\n\n# 2. Build debug APK using Gradle wrapper\n./gradlew assembleDebug\n\n# 3. Output binary generated at:\n# app/build/outputs/apk/debug/app-debug.apk`}
+        />
+      </div>
+    </div>
+  </div>
+</section>

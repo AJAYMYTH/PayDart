@@ -1,0 +1,19 @@
+---
+interface Props {
+  variant?: 'emerald' | 'cyber' | 'outline' | 'white';
+  class?: string;
+}
+
+const { variant = 'emerald', class: className = '' } = Astro.props;
+
+const variantStyles = {
+  emerald: 'bg-emerald-950/60 border border-emerald-500/30 text-emerald-400',
+  cyber: 'bg-[#00F076]/10 border border-[#00F076]/40 text-[#00F076] shadow-[0_0_12px_rgba(0,240,118,0.2)]',
+  outline: 'border border-white/15 bg-white/[0.03] text-zinc-300',
+  white: 'bg-white/10 border border-white/30 text-white',
+};
+---
+
+<span class={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wide ${variantStyles[variant]} ${className}`}>
+  <slot />
+</span>

@@ -1,0 +1,109 @@
+---
+import { Download, ShieldCheck, Heart, ArrowUp, Zap } from '@lucide/astro';
+import GithubIcon from './ui/GithubIcon.astro';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const githubUrl = 'https://github.com/AJAYMYTH/PayDart';
+const releasesUrl = 'https://github.com/AJAYMYTH/PayDart/releases';
+---
+
+<footer class="relative bg-[#020503] border-t border-white/10 pt-20 pb-12 overflow-hidden">
+  <!-- Top glow accent -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 max-w-4xl h-1 bg-gradient-to-r from-transparent via-[#00F076]/40 to-transparent"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
+      <!-- Col 1: Brand & Bio (2 cols) -->
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-9 h-9 rounded-xl bg-[#08120b] border border-[#00F076]/40 flex items-center justify-center p-1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" class="w-full h-full">
+              <path d="M12 20V12H20" stroke="#00F076" stroke-width="3" stroke-linecap="round" />
+              <path d="M52 20V12H44" stroke="#00F076" stroke-width="3" stroke-linecap="round" />
+              <path d="M12 44V52H20" stroke="#00F076" stroke-width="3" stroke-linecap="round" />
+              <path d="M52 44V52H44" stroke="#00F076" stroke-width="3" stroke-linecap="round" />
+              <path d="M35 14L19 34H31L27 50L45 28H31L35 14Z" fill="#00F076" />
+              <path d="M33 18L23 33H31L29 44L41 29H31L33 18Z" fill="#FFFFFF" />
+            </svg>
+          </div>
+          <span class="font-extrabold text-2xl tracking-tight text-white">PayDart</span>
+        </div>
+        <p class="text-zinc-400 text-sm max-w-sm mb-6 leading-relaxed">
+          The ultra-fast native UPI QR launcher for Android. Point, scan in &lt;10ms, and hand off directly to your favorite payment app with zero ads and 100% offline privacy.
+        </p>
+        <div class="flex items-center gap-3">
+          <a
+            href={githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 hover:border-[#00F076] hover:text-[#00F076] flex items-center justify-center text-zinc-300 transition-colors"
+            aria-label="GitHub Repository"
+          >
+            <GithubIcon class="w-5 h-5" />
+          </a>
+          <a
+            href="#download"
+            class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 hover:border-[#00F076] hover:text-[#00F076] flex items-center justify-center text-zinc-300 transition-colors"
+            aria-label="Download APK"
+          >
+            <Download class="w-5 h-5" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2: Navigation -->
+      <div>
+        <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-[#00F076] mb-4">Product</h4>
+        <ul class="space-y-2.5 text-sm text-zinc-400">
+          <li><a href="#features" class="hover:text-white transition-colors">Features</a></li>
+          <li><a href="#benchmarks" class="hover:text-white transition-colors">Speed Benchmarks</a></li>
+          <li><a href="#problem-solution" class="hover:text-white transition-colors">Why PayDart?</a></li>
+          <li><a href="#download" class="hover:text-white transition-colors">Direct APK Download</a></li>
+          <li><a href="#installation" class="hover:text-white transition-colors">Install Guide</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Legal & Security Docs -->
+      <div>
+        <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-[#00F076] mb-4">Legal &amp; Trust</h4>
+        <ul class="space-y-2.5 text-sm text-zinc-400">
+          <li><a href={`${baseUrl}/legal/privacy/`} class="hover:text-white transition-colors">Privacy Policy</a></li>
+          <li><a href={`${baseUrl}/legal/terms/`} class="hover:text-white transition-colors">Terms of Service</a></li>
+          <li><a href={`${baseUrl}/legal/security/`} class="hover:text-white transition-colors">Security Policy</a></li>
+          <li><a href={`${baseUrl}/legal/licenses/`} class="hover:text-white transition-colors">Open Source Licenses</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Community & Source -->
+      <div>
+        <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-[#00F076] mb-4">Community</h4>
+        <ul class="space-y-2.5 text-sm text-zinc-400">
+          <li><a href={`${githubUrl}/releases`} target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">GitHub Releases</a></li>
+          <li><a href={`${githubUrl}/issues`} target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Issue Tracker</a></li>
+          <li><a href={`${githubUrl}/blob/main/CONTRIBUTING.md`} target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Contributing</a></li>
+          <li><a href={`${githubUrl}/blob/main/CODE_OF_CONDUCT.md`} target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Code of Conduct</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Monumental Big Letter PAYDART Display -->
+    <div class="w-full text-center my-6 select-none overflow-hidden">
+      <div class="mega-footer-text font-display font-black tracking-tighter">
+        PAYDART
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-400">
+      <div class="flex items-center gap-2">
+        <span>© 2026 PayDart. Open Source under Apache 2.0 License.</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span>Crafted for Speed by <a href="https://github.com/AJAYMYTH" target="_blank" rel="noopener noreferrer" class="text-white hover:text-[#00F076] underline underline-offset-4">AJAYMYTH</a></span>
+        <a href="#" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-300 hover:text-white transition-colors" aria-label="Back to Top">
+          <ArrowUp class="w-4 h-4" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

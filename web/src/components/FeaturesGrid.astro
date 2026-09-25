@@ -1,0 +1,120 @@
+---
+import { Cpu, ShieldCheck, Zap, Image, RefreshCw, Smartphone, Layers, EyeOff, Sparkles, Terminal } from '@lucide/astro';
+import Badge from './ui/Badge.astro';
+---
+
+<section id="features" class="py-20 md:py-28 relative scroll-mt-20 border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+      <Badge variant="emerald" class="mb-4">
+        <Cpu class="w-3.5 h-3.5 text-[#00F076]" />
+        UNDER THE HOOD
+      </Badge>
+      <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
+        Architected for <span class="text-gradient-emerald">Extreme Efficiency.</span>
+      </h2>
+      <p class="text-zinc-400 text-base sm:text-lg">
+        Every line of Kotlin and Jetpack Compose is optimized to eliminate garbage collection pauses, IPC blocking, and render lag.
+      </p>
+    </div>
+
+    <!-- Bento Grid (6 Features) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal-on-scroll">
+      <!-- Feature 1: C++ Prewarming -->
+      <div class="glass-panel p-8 rounded-3xl border-white/10 hover:border-[#00F076]/40 transition-all duration-300 flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-[#00F076]/15 border border-[#00F076]/30 flex items-center justify-center text-[#00F076] mb-6">
+            <Cpu class="w-6 h-6" />
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">C++ ML Detector Pre-warming</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-4">
+            ML Kit's native <code>libbarhopper_v3.so</code> typically imposes a 400ms initialization penalty on the first scanned frame. PayDart primes the native engine in a background thread at startup with a 1x1 synthetic bitmap.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-white/10 text-xs font-mono text-[#00F076]">
+          Result: First-scan latency drop from 450ms → 8ms.
+        </div>
+      </div>
+
+      <!-- Feature 2: Offline Airgap -->
+      <div class="glass-panel p-8 rounded-3xl border-white/10 hover:border-[#00F076]/40 transition-all duration-300 flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-white mb-6">
+            <ShieldCheck class="w-6 h-6 text-[#00F076]" />
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">100% Air-Gapped Privacy</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-4">
+            PayDart does not declare <code>android.permission.INTERNET</code> in its manifest. By fundamental operating system design, it is physically impossible for the app to send your camera frames, payees, or device info anywhere.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-white/10 text-xs font-mono text-zinc-300">
+          Guaranteed by Android OS security sandbox.
+        </div>
+      </div>
+
+      <!-- Feature 3: Instant Window Handoff -->
+      <div class="glass-panel p-8 rounded-3xl border-white/10 hover:border-[#00F076]/40 transition-all duration-300 flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-[#00F076]/15 border border-[#00F076]/30 flex items-center justify-center text-[#00F076] mb-6">
+            <Zap class="w-6 h-6" />
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Zero-Delay Intent Handoff</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-4">
+            Bypasses the slow Android system <code>createChooser</code> dialog which stalls the UI thread for 400–800ms. Dispatches direct package intents with <code>overridePendingTransition(0, 0)</code> for seamless zero-latency handoff.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-white/10 text-xs font-mono text-[#00F076]">
+          Zero window animation latency.
+        </div>
+      </div>
+
+      <!-- Feature 4: Gallery Photo Picker -->
+      <div class="glass-panel p-8 rounded-3xl border-white/10 hover:border-[#00F076]/40 transition-all duration-300 flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-white mb-6">
+            <Image class="w-6 h-6 text-[#00F076]" />
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Photo Picker Screenshot Scan</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-4">
+            Need to pay a bill or friend from a screenshot or saved payment QR? Integrated Android Photo Picker lets you select any image securely without asking for broad file storage permissions.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-white/10 text-xs font-mono text-zinc-300">
+          Zero file system permission prompts.
+        </div>
+      </div>
+
+      <!-- Feature 5: Pure Kotlin Parser -->
+      <div class="glass-panel p-8 rounded-3xl border-white/10 hover:border-[#00F076]/40 transition-all duration-300 flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-[#00F076]/15 border border-[#00F076]/30 flex items-center justify-center text-[#00F076] mb-6">
+            <Terminal class="w-6 h-6" />
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Zero-Allocation UPI Parser</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-4">
+            Pure Kotlin parser strictly extracts and sanitizes standard NPCI UPI parameters (<code>pa</code>, <code>pn</code>, <code>am</code>, <code>cu</code>, <code>tn</code>, <code>mc</code>) in 0.1ms with zero regex backtracking penalties or runtime heap overhead.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-white/10 text-xs font-mono text-[#00F076]">
+          Fully NPCI Unified Payments Interface compliant.
+        </div>
+      </div>
+
+      <!-- Feature 6: Battery & Memory Efficiency -->
+      <div class="glass-panel p-8 rounded-3xl border-white/10 hover:border-[#00F076]/40 transition-all duration-300 flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-white mb-6">
+            <Sparkles class="w-6 h-6 text-[#00F076]" />
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Zero Background Footprint</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-4">
+            PayDart terminates camera analysis immediately upon QR detection via atomic flags. It runs zero background services, zero push notification receivers, and consumes zero battery when closed.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-white/10 text-xs font-mono text-zinc-300">
+          0% background battery drain.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

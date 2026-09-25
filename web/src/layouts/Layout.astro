@@ -1,0 +1,158 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = 'PayDart — Ultra-Fast Native UPI QR Launcher (<10ms)',
+  description = 'Point, scan UPI QR codes in 8ms, and hand off instantly to your preferred UPI app. 100% offline, zero trackers, zero ads, under 5MB.',
+  image = '/PayDart/og-image.png',
+} = Astro.props;
+
+const siteUrl = 'https://ajaymyth.github.io';
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href={`${baseUrl}/favicon.svg`} />
+    <link rel="manifest" href={`${baseUrl}/site.webmanifest`} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#00F076" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+
+    <!-- Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-[#040805] text-zinc-100 min-h-screen relative selection:bg-[#00F076] selection:text-[#040805] overflow-x-hidden font-sans">
+    <!-- Ambient Cyber Glows -->
+    <div class="fixed inset-0 cyber-grid pointer-events-none z-0 opacity-40"></div>
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] radial-glow-top pointer-events-none z-0"></div>
+    <div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[400px] radial-glow-center pointer-events-none z-0 opacity-30"></div>
+
+    <div class="relative z-10 flex flex-col min-h-screen">
+      <slot />
+    </div>
+
+    <!-- Anime.js & Scroll Observer Engine -->
+    <script>
+      import anime from 'animejs';
+
+      function initScrollAnimations() {
+        // Hero entry staggered animation
+        anime({
+          targets: '.hero-anime',
+          translateY: [30, 0],
+          opacity: [0, 1],
+          delay: anime.stagger(120, { start: 200 }),
+          duration: 900,
+          easing: 'easeOutExpo',
+        });
+
+        // Phone mockup float & glow animation
+        anime({
+          targets: '.phone-mockup-float',
+          translateY: [-6, 6],
+          duration: 4000,
+          direction: 'alternate',
+          loop: true,
+          easing: 'easeInOutSine',
+        });
+
+        // Intersection Observer for scroll-based reveals and counters
+        const observerOptions = {
+          root: null,
+          rootMargin: '0px 0px -80px 0px',
+          threshold: 0.15,
+        };
+
+        const scrollObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target as HTMLElement;
+
+              // Animate element reveal
+              anime({
+                targets: el,
+                translateY: [40, 0],
+                opacity: [0, 1],
+                duration: 800,
+                easing: 'easeOutCubic',
+              });
+
+              // If element has stat counters, trigger count-up
+              const counters = el.querySelectorAll('.stat-counter');
+              counters.forEach((counter) => {
+                const targetVal = parseFloat(counter.getAttribute('data-target') || '0');
+                const suffix = counter.getAttribute('data-suffix') || '';
+                const prefix = counter.getAttribute('data-prefix') || '';
+                const decimals = parseInt(counter.getAttribute('data-decimals') || '0', 10);
+
+                const obj = { val: 0 };
+                anime({
+                  targets: obj,
+                  val: targetVal,
+                  round: decimals === 0 ? 1 : 10,
+                  duration: 1600,
+                  easing: 'easeOutExpo',
+                  update: () => {
+                    counter.textContent = `${prefix}${obj.val.toFixed(decimals)}${suffix}`;
+                  },
+                });
+              });
+
+              // Stop observing once animated
+              scrollObserver.unobserve(el);
+            }
+          });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach((elem) => {
+          // Set initial hidden state
+          (elem as HTMLElement).style.opacity = '0';
+          (elem as HTMLElement).style.transform = 'translateY(40px)';
+          scrollObserver.observe(elem);
+        });
+      }
+
+      // Initialize on DOMContentLoaded and on Astro view transitions
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initScrollAnimations);
+      } else {
+        initScrollAnimations();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+---
+import { HelpCircle, ChevronDown, ShieldCheck, Lock, Zap } from '@lucide/astro';
+import Badge from './ui/Badge.astro';
+
+const faqs = [
+  {
+    q: 'Is PayDart safe to use for financial transactions?',
+    a: 'Absolutely. PayDart is 100% open-source and declares zero network permissions (no android.permission.INTERNET). It is physically incapable of transmitting camera frames, payee VPAs, or metadata over the web. Furthermore, PayDart never handles money or bank credentials—it merely reads the QR string and hands off to your official, bank-certified UPI application.',
+  },
+  {
+    q: 'Does PayDart ever ask for or see my UPI PIN?',
+    a: 'Never. PayDart does not and cannot access your UPI PIN or banking details. When you scan a QR code, PayDart only passes the payee address and transaction amount to your chosen UPI app (such as Google Pay, PhonePe, or BHIM). You authenticate and enter your UPI PIN exclusively inside the secure, encrypted sandbox of your bank’s app.',
+  },
+  {
+    q: 'How does PayDart scan so much faster than other apps?',
+    a: 'Traditional payment apps run heavy splash screens, load dozens of ad networks, fetch user loan balances, and query tracking servers before even powering on the camera sensor. PayDart is a single-purpose native utility: it asynchronously pre-warms the C++ barcode detector and dispatches direct Android intents with zero window animation delay, achieving scanning times under 10ms.',
+  },
+  {
+    q: 'Can I scan a payment QR code from a screenshot or WhatsApp?',
+    a: 'Yes. PayDart integrates the modern Android Photo Picker. Tap the image icon in the top HUD to select any saved screenshot or photo. It parses the QR code locally using ML Kit and launches your UPI app immediately without requiring broad file storage permissions.',
+  },
+  {
+    q: 'What permissions are required by PayDart?',
+    a: 'Only android.permission.CAMERA is required to render the live viewfinder and scan QR codes. PayDart also uses android.permission.VIBRATE for haptic feedback upon detection. No internet, location, contact, or file storage permissions are requested.',
+  },
+  {
+    q: 'Why download from GitHub Releases instead of the Play Store?',
+    a: 'Distributing directly via GitHub Releases ensures you receive a 100% pure, unadulterated binary directly compiled from source code, free from proprietary store wrappers, forced telemetry, or licensing restrictions. You can verify the exact SHA-256 hash or build it yourself using Gradle.',
+  },
+];
+---
+
+<section id="faq" class="py-20 md:py-28 relative scroll-mt-20 border-t border-white/5">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16 reveal-on-scroll">
+      <Badge variant="cyber" class="mb-4">
+        <HelpCircle class="w-3.5 h-3.5" />
+        COMMON QUESTIONS
+      </Badge>
+      <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
+        Frequently Asked <span class="text-gradient-emerald">Questions.</span>
+      </h2>
+      <p class="text-zinc-400 text-sm sm:text-base">
+        Everything you need to know about security, privacy, and how PayDart integrates with UPI.
+      </p>
+    </div>
+
+    <!-- FAQ Accordion List -->
+    <div class="space-y-4 reveal-on-scroll">
+      {
+        faqs.map((faq, idx) => (
+          <details class="group glass-panel rounded-2xl border-white/10 hover:border-[#00F076]/40 transition-all p-6 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer list-none text-left">
+              <span class="text-base sm:text-lg font-bold text-white group-hover:text-[#00F076] transition-colors pr-4">
+                {faq.q}
+              </span>
+              <span class="w-8 h-8 rounded-full bg-white/5 group-hover:bg-[#00F076]/20 flex items-center justify-center shrink-0 transition-colors text-zinc-400 group-hover:text-[#00F076]">
+                <ChevronDown class="w-4 h-4 transition-transform duration-300 group-open:rotate-180" />
+              </span>
+            </summary>
+            <p class="mt-4 text-zinc-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+              {faq.a}
+            </p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

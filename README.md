@@ -5,6 +5,7 @@
 **Lightweight, Lightning-Fast UPI QR Launcher for Android**
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![Website](https://img.shields.io/badge/Website-PayDart_Live-00F076.svg)](https://ajaymyth.github.io/PayDart)
 [![Android](https://img.shields.io/badge/Platform-Android_7.0%2B_(API_24%2B)-brightgreen.svg)](https://developer.android.com)
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.0.21-purple.svg)](https://kotlinlang.org)
 [![CameraX](https://img.shields.io/badge/CameraX-1.4.1-orange.svg)](https://developer.android.com/training/camerax)
@@ -13,7 +14,7 @@
 
 Point at any UPI QR code or upload a screenshot, and **PayDart** instantly hands off payment details to your favorite UPI app (Google Pay, PhonePe, Paytm, BHIM, CRED, Navi) in **under 10 milliseconds**. Zero lag. Zero bloat. Zero cloud.
 
-[Features](#-features) • [Performance](#-performance-engineering) • [Architecture](#-architecture) • [Getting Started](#-getting-started) • [Contributing](#-contributing)
+[🌐 Official Website](https://ajaymyth.github.io/PayDart) • [📥 Download APK](https://ajaymyth.github.io/PayDart/#download) • [Features](#-features) • [Performance](#-performance-engineering) • [Architecture](#-architecture) • [Getting Started](#-getting-started) • [Contributing](#-contributing)
 
 </div>
 

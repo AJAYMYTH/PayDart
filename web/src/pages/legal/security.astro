@@ -1,0 +1,67 @@
+---
+import LegalLayout from '../../layouts/LegalLayout.astro';
+import CodeBlock from '../../components/ui/CodeBlock.astro';
+---
+
+<LegalLayout
+  title="Security & Air-Gap Policy"
+  description="PayDart's cryptographic guarantees, air-gapped architecture, and step-by-step verification guide."
+  lastUpdated="September 2026"
+>
+  <div class="space-y-8 text-zinc-300">
+    <section>
+      <h2 class="text-2xl font-bold text-white mb-3">1. Air-Gapped Guarantee</h2>
+      <p class="mb-4">
+        Unlike virtually all mainstream mobile financial utilities, PayDart enforces a zero-trust network policy at the OS level:
+      </p>
+      <ul class="list-disc pl-6 space-y-2 mb-4">
+        <li><strong>No Internet Permission:</strong> The app does not request <code>android.permission.INTERNET</code> or <code>android.permission.ACCESS_NETWORK_STATE</code> in <code>AndroidManifest.xml</code>.</li>
+        <li><strong>Physical Isolation:</strong> The Linux kernel sandbox prevents the app process from creating TCP/UDP sockets or transmitting data packets to any IP address.</li>
+        <li><strong>Volatile Memory Only:</strong> Camera frames are converted to temporary buffers, scanned by the local ML Kit C++ engine, and recycled immediately by the Android garbage collector. No image files are persisted.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-white mb-3">2. How to Verify Android Permissions</h2>
+      <p class="mb-4">
+        You can independently verify that PayDart has zero internet access using Android's native command-line tools:
+      </p>
+      <CodeBlock
+        title="Check Manifest Permissions via ADB"
+        code={`# Dump declared permissions of PayDart\nadb shell dumpsys package com.paydart.app | grep "permission:"\n\n# Expected result:\n# android.permission.CAMERA\n# android.permission.VIBRATE\n# (Notice android.permission.INTERNET is completely absent!)`}
+      />
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-white mb-3">3. APK Integrity &amp; SHA-256 Checksum</h2>
+      <p class="mb-4">
+        Every official release APK published on GitHub Releases includes an authoritative SHA-256 hash. Before installing on your device, you can verify that the file has not been tampered with:
+      </p>
+      <CodeBlock
+        title="Verify APK Checksum"
+        code={`# macOS / Linux\nsha256sum app-debug.apk\n\n# Windows PowerShell\nGet-FileHash app-debug.apk -Algorithm SHA256`}
+      />
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-white mb-3">4. Decompilation &amp; Source Auditing</h2>
+      <p class="mb-4">
+        PayDart's binaries are compiled directly from this open-source repository. You can verify the APK contents using open-source decompilers such as <a href="https://github.com/skylot/jadx" target="_blank" rel="noopener noreferrer" class="text-[#00F076] hover:underline">JADX</a>:
+      </p>
+      <CodeBlock
+        title="Decompile and Inspect"
+        code={`# Install jadx and decompile APK\njadx app-debug.apk -d paydart-decompiled\n\n# Inspect AndroidManifest.xml and source tree\ncat paydart-decompiled/resources/AndroidManifest.xml`}
+      />
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-white mb-3">5. Reporting a Security Vulnerability</h2>
+      <p class="mb-4">
+        If you discover a security vulnerability or security bug, please report it privately via GitHub Security Advisories or by emailing the project maintainer at <code class="text-[#00F076]">javaliajayakumar8574@gmail.com</code>.
+      </p>
+      <p>
+        Please review our full <a href="https://github.com/AJAYMYTH/PayDart/blob/main/SECURITY.md" target="_blank" rel="noopener noreferrer" class="text-[#00F076] hover:underline">SECURITY.md</a> for our responsible disclosure policy.
+      </p>
+    </section>
+  </div>
+</LegalLayout>
