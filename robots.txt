@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ajaymyth.github.io/PayDart/sitemap-index.xml

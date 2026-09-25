@@ -1,0 +1,14 @@
+{
+  "name": "PayDart - Ultra-Fast UPI QR Launcher",
+  "short_name": "PayDart",
+  "icons": [
+    {
+      "src": "/PayDart/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#00F076",
+  "background_color": "#040805",
+  "display": "standalone"
+}
