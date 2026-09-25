@@ -14,7 +14,7 @@
 
 Point at any UPI QR code or upload a screenshot, and **PayDart** instantly hands off payment details to your favorite UPI app (Google Pay, PhonePe, Paytm, BHIM, CRED, Navi) in **under 10 milliseconds**. Zero lag. Zero bloat. Zero cloud.
 
-[🌐 Official Website](https://ajaymyth.github.io/PayDart) • [📥 Download APK](https://ajaymyth.github.io/PayDart/#download) • [Features](#-features) • [Performance](#-performance-engineering) • [Architecture](#-architecture) • [Getting Started](#-getting-started) • [Contributing](#-contributing)
+[🌐 Official Website](https://ajaymyth.github.io/PayDart) • [📥 Download APK](https://ajaymyth.github.io/PayDart/#download) • [Features](#features) • [Performance](#performance-engineering) • [Architecture](#architecture) • [Getting Started](#getting-started) • [Contributing](#contributing)
 
 </div>
 
