@@ -1,0 +1,94 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import BigFooter from '../components/BigFooter.astro';
+import Button from '../components/ui/Button.astro';
+import Badge from '../components/ui/Badge.astro';
+import CodeBlock from '../components/ui/CodeBlock.astro';
+import GithubIcon from '../components/ui/GithubIcon.astro';
+import { RefreshCw, Home, AlertOctagon, Terminal } from '@lucide/astro';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const homeUrl = `${baseUrl}/`;
+const issueUrl = 'https://github.com/AJAYMYTH/PayDart/issues/new';
+---
+
+<Layout
+  title="500 — System Anomaly // Internal Fault | PayDart"
+  description="An internal system exception occurred during execution."
+>
+  <Navbar />
+
+  <main class="min-h-[75vh] flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <!-- Ambient Error Aura -->
+    <div class="absolute w-96 h-96 bg-gradient-to-tr from-amber-500/10 via-[#00F076]/10 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-2xl w-full mx-auto text-center relative z-10">
+      <!-- Status Badge -->
+      <div class="inline-flex items-center gap-2 mb-6">
+        <Badge variant="cyber" class="text-xs px-3.5 py-1.5 border-amber-500/40 bg-amber-950/30 text-amber-400">
+          <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+          <span class="font-mono">ERROR 500 // ENGINE EXCEPTION</span>
+        </Badge>
+      </div>
+
+      <!-- Warning Graphic -->
+      <div class="relative w-36 h-36 mx-auto mb-8 flex items-center justify-center">
+        <!-- Broken Corners -->
+        <div class="absolute -top-1 -left-1 w-6 h-6 border-t-2 border-l-2 border-amber-500/70 rounded-tl"></div>
+        <div class="absolute -top-1 -right-1 w-6 h-6 border-t-2 border-r-2 border-amber-500/70 rounded-tr"></div>
+        <div class="absolute -bottom-1 -left-1 w-6 h-6 border-b-2 border-l-2 border-amber-500/70 rounded-bl"></div>
+        <div class="absolute -bottom-1 -right-1 w-6 h-6 border-b-2 border-r-2 border-amber-500/70 rounded-br"></div>
+
+        <div class="w-28 h-28 rounded-2xl bg-black/80 border border-white/10 flex flex-col items-center justify-center p-4">
+          <AlertOctagon class="w-12 h-12 text-amber-400 mb-1" />
+          <span class="text-[10px] font-mono font-bold text-zinc-500">FAULT DETECTED</span>
+        </div>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white mb-4">
+        Internal <span class="text-amber-400">System Anomaly.</span>
+      </h1>
+
+      <p class="text-zinc-400 text-sm sm:text-base leading-relaxed max-w-lg mx-auto mb-8">
+        An unexpected execution exception interrupted the rendering pipeline. The engine encountered an unhandled frame condition.
+      </p>
+
+      <!-- Diagnostic Code Block -->
+      <div class="max-w-md mx-auto mb-8 text-left">
+        <CodeBlock
+          title="Incident Trace"
+          code={`EXCEPTION: 500_INTERNAL_ENGINE_PANIC\nSTACK: render_pipeline.main()\nRECOVERY: Clearing cache / re-initializing viewfinder\nADVISORY: Submit bug report if issue persists`}
+        />
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <Button
+          variant="primary"
+          size="md"
+          href={homeUrl}
+          class="w-full sm:w-auto shadow-glow-sm"
+        >
+          <Home class="w-4 h-4 text-black" />
+          <span>Return to Viewfinder</span>
+        </Button>
+
+        <Button
+          variant="secondary"
+          size="md"
+          href={issueUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full sm:w-auto"
+        >
+          <GithubIcon class="w-4 h-4 text-zinc-300" />
+          <span>Report on GitHub</span>
+        </Button>
+      </div>
+    </div>
+  </main>
+
+  <BigFooter />
+</Layout>

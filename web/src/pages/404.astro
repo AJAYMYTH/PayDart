@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import BigFooter from '../components/BigFooter.astro';
+import Button from '../components/ui/Button.astro';
+import Badge from '../components/ui/Badge.astro';
+import CodeBlock from '../components/ui/CodeBlock.astro';
+import { Home, Download, AlertTriangle, ArrowLeft, RefreshCw, SearchX, Terminal } from '@lucide/astro';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const homeUrl = `${baseUrl}/`;
+const downloadUrl = `${baseUrl}/#download`;
+const githubUrl = 'https://github.com/AJAYMYTH/PayDart';
+---
+
+<Layout
+  title="404 — Target Not Found // Signal Lost | PayDart"
+  description="The requested page could not be located in the PayDart radar space."
+>
+  <Navbar />
+
+  <main class="min-h-[75vh] flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <!-- Ambient Error Aura -->
+    <div class="absolute w-96 h-96 bg-gradient-to-tr from-[#00F076]/15 via-emerald-950/20 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-2xl w-full mx-auto text-center relative z-10">
+      <!-- Status Badge -->
+      <div class="inline-flex items-center gap-2 mb-6">
+        <Badge variant="cyber" class="text-xs px-3.5 py-1.5 border-red-500/40 bg-red-950/30 text-red-400">
+          <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+          <span class="font-mono">ERROR 404 // SIGNAL LOST</span>
+        </Badge>
+      </div>
+
+      <!-- Broken Reticle Graphic -->
+      <div class="relative w-36 h-36 mx-auto mb-8 flex items-center justify-center">
+        <!-- Broken Corners -->
+        <div class="absolute -top-1 -left-1 w-6 h-6 border-t-2 border-l-2 border-red-500/70 rounded-tl"></div>
+        <div class="absolute -top-1 -right-1 w-6 h-6 border-t-2 border-r-2 border-red-500/70 rounded-tr"></div>
+        <div class="absolute -bottom-1 -left-1 w-6 h-6 border-b-2 border-l-2 border-red-500/70 rounded-bl"></div>
+        <div class="absolute -bottom-1 -right-1 w-6 h-6 border-b-2 border-r-2 border-red-500/70 rounded-br"></div>
+
+        <div class="w-28 h-28 rounded-2xl bg-black/80 border border-white/10 flex flex-col items-center justify-center p-4">
+          <SearchX class="w-12 h-12 text-red-400 mb-1" />
+          <span class="text-[10px] font-mono font-bold text-zinc-500">NO TARGET</span>
+        </div>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white mb-4">
+        Target <span class="text-red-400">Not Found.</span>
+      </h1>
+
+      <p class="text-zinc-400 text-sm sm:text-base leading-relaxed max-w-lg mx-auto mb-8">
+        The radar scanner couldn’t resolve this URL coordinate. The page may have been repositioned, purged, or you may have scanned a malformed path.
+      </p>
+
+      <!-- Diagnostic Code Block -->
+      <div class="max-w-md mx-auto mb-8 text-left">
+        <CodeBlock
+          title="Diagnostic Dump"
+          code={`STATUS: 404_TARGET_NOT_LOCATED\nRESOLVER: UPI_PAY_LAUNCHER_ENGINE\nREASON: No active route matches URI\nACTION: Returning to main viewfinder`}
+        />
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <Button
+          variant="primary"
+          size="md"
+          href={homeUrl}
+          class="w-full sm:w-auto shadow-glow-sm"
+        >
+          <Home class="w-4 h-4 text-black" />
+          <span>Back to Home</span>
+        </Button>
+
+        <Button
+          variant="secondary"
+          size="md"
+          href={downloadUrl}
+          class="w-full sm:w-auto"
+        >
+          <Download class="w-4 h-4 text-[#00F076]" />
+          <span>Download PayDart APK</span>
+        </Button>
+      </div>
+    </div>
+  </main>
+
+  <BigFooter />
+</Layout>
