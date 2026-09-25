@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PayDart</string>
+    <string name="camera_permission_rationale">PayDart needs camera access to scan UPI QR codes instantly.</string>
+    <string name="grant_permission">Grant Permission</string>
+</resources>
