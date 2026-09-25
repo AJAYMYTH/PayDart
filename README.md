@@ -1,6 +1,8 @@
-# ⚡ PayDart
-
 <div align="center">
+
+<img src="assets/logo.svg" alt="PayDart Logo" width="128" height="128" />
+
+# PayDart
 
 **Lightweight, Lightning-Fast UPI QR Launcher for Android**
 

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <defs>
+    <linearGradient id="logo-bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#08140c" />
+      <stop offset="100%" stop-color="#040805" />
+    </linearGradient>
+    <linearGradient id="logo-dart-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F076" />
+      <stop offset="50%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <filter id="logo-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Outer Rounded Shield / Chassis -->
+  <rect x="4" y="4" width="120" height="120" rx="32" fill="url(#logo-bg-grad)" stroke="#00F076" stroke-opacity="0.35" stroke-width="2.5" />
+  <rect x="10" y="10" width="108" height="108" rx="26" stroke="#00F076" stroke-opacity="0.1" stroke-width="1" />
+
+  <!-- Cyber Reticle Corners -->
+  <path d="M26 42V26H42" stroke="#00F076" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M102 42V26H86" stroke="#00F076" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M26 86V102H42" stroke="#00F076" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M102 86V102H86" stroke="#00F076" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Neon Emerald & White Lightning Dart -->
+  <path d="M70 28L38 68H62L54 100L90 56H62L70 28Z" fill="url(#logo-dart-grad)" filter="url(#logo-glow)" />
+  <path d="M66 35L46 66H62L58 88L82 58H62L66 35Z" fill="#FFFFFF" fill-opacity="0.95" />
+</svg>
