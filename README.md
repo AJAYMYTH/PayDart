@@ -211,4 +211,4 @@ PayDart takes privacy seriously. It never accesses, stores, or transmits financi
 ## 📄 License
 
 PayDart is licensed under the [Apache License, Version 2.0](LICENSE).
-Copyright © 2026 AJAYMYTH and PayDart Contributors.
+Copyright © 2026 [AJAYMYTH](JavaliAjayakumar) and PayDart Contributors.
